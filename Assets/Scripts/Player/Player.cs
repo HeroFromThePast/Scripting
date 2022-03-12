@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : Unit
 {
-    [SerializeField] Unit unit;
+
     [SerializeField] int lives = 3;
     // Start is called before the first frame update
     void Start()
@@ -20,6 +20,6 @@ public class Player : Unit
     public override void Die()
     {
         base.Die();
-
+        lives--;
     }
 }
