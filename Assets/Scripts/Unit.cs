@@ -2,22 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit : MonoBehaviour
+public class Unit
 {
-    [SerializeField] string UnitName, faction;
+    [SerializeField]public string UnitName, faction;
     [SerializeField] public int level;
 
-    public void Combat(Unit opponent)
+    public Unit Combat(Unit opponent)
     {
+        Unit result = new Unit();
         if (opponent.level >= this.level)
         {
             Die();
+            result = opponent;
         }
         else
         {
             level += opponent.level;
-            Destroy(opponent.gameObject);
+            result = this;
+            //Destroy(opponent.gameObject);
         }
+        return result;
     }
     public virtual void Die()
     {
