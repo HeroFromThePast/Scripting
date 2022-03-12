@@ -12,7 +12,7 @@ public class PlayerTower : MonoBehaviour
     void Start()
     {
 
-        player = this.gameObject;
+        player = gameObject;
         Instantiate(playerTower, player.transform.position, Quaternion.identity);
         
     }

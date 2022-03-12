@@ -7,11 +7,6 @@ public class Unit : MonoBehaviour
     [SerializeField] string UnitName, faction;
     [SerializeField] public int level;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void Combat(Unit opponent)
     {
         if (opponent.level >= this.level)
@@ -23,9 +18,8 @@ public class Unit : MonoBehaviour
             level += opponent.level;
             Destroy(opponent.gameObject);
         }
-    }void Die()
+    }public virtual void Die()
     {
         Debug.Log("se murio");
     }
-
 }
