@@ -5,7 +5,7 @@ using UnityEngine;
 public class Unit
 {
     [SerializeField]public string UnitName, faction;
-    [SerializeField] public int level;
+    [SerializeField]public int level;
 
     public Unit Combat(Unit opponent)
     {

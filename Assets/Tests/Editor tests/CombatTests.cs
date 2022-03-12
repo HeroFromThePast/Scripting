@@ -11,9 +11,9 @@ public class CombatTests
     [Test]
     public void CombatWinnerTests()
     {
-        Unit test1Char = new Unit();
-        Unit test2Char = new Unit();
-        Unit test3Char = new Unit();
+        Player test1Char = new Player();
+        Player test2Char = new Player();
+        Player test3Char = new Player();
 
         Unit oponent1char = new Unit();
         Unit oponent2char = new Unit();
@@ -52,9 +52,9 @@ public class CombatTests
 
     public void TestWinnnerLevel()
     {
-        Unit test1Char = new Unit();
-        Unit test2Char = new Unit();
-        Unit test3Char = new Unit();
+        Player test1Char = new Player();
+        Player test2Char = new Player();
+        Player test3Char = new Player();
 
         Unit oponent1char = new Unit();
         Unit oponent2char = new Unit();
@@ -84,6 +84,4 @@ public class CombatTests
 
         Assert.AreEqual(8, test3Char.Combat(oponent3char).level);
     }
-
-
 }

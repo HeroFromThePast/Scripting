@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 521309798713338768}
   - component: {fileID: 4704119467313777954}
-  - component: {fileID: 136399305410239605}
   - component: {fileID: 754644153311901517}
   - component: {fileID: 283077504}
   m_Layer: 0
@@ -85,21 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &136399305410239605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640912756552879573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 107c3ae0e190c154fa82cf6d04b5b2e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UnitName: Ciclope
-  faction: Bad
-  level: 1
 --- !u!61 &754644153311901517
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -138,4 +122,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d703fcf0fd3b56644bba26c0bbe6dae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 136399305410239605}

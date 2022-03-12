@@ -334,7 +334,6 @@ GameObject:
   - component: {fileID: 717999804}
   - component: {fileID: 717999803}
   - component: {fileID: 717999807}
-  - component: {fileID: 717999802}
   - component: {fileID: 717999805}
   - component: {fileID: 717999806}
   m_Layer: 0
@@ -344,21 +343,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &717999802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 717999801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 107c3ae0e190c154fa82cf6d04b5b2e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UnitName: Hero
-  faction: Good
-  level: 2
 --- !u!212 &717999803
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -717,5 +701,6 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136399305410239605, guid: 869e486bf9aa53048aad54724e9a8399, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 869e486bf9aa53048aad54724e9a8399, type: 3}
