@@ -18,7 +18,8 @@ public class Unit : MonoBehaviour
             level += opponent.level;
             Destroy(opponent.gameObject);
         }
-    }public virtual void Die()
+    }
+    public virtual void Die()
     {
         Debug.Log("se murio");
     }
