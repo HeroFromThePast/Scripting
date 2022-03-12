@@ -13,6 +13,7 @@ public class Unit
         if (opponent.level >= this.level)
         {
             Die();
+            opponent.level += this.level;
             result = opponent;
         }
         else
