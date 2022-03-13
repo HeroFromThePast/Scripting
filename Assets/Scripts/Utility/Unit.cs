@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit
+public abstract class Unit : MonoBehaviour
 {
     [SerializeField]public string UnitName, faction;
     [SerializeField]public int level;
 
+
+    public delegate void OnDeath(Unit unit);
+    public event OnDeath death;
     public virtual Unit Combat(Unit opponent)
     {
-        Unit result = new Unit();
+        Unit result;
         if (opponent.level >= this.level)
         {
             Die();
@@ -20,7 +23,8 @@ public class Unit
         {
             level += opponent.level;
             result = this;
-            //Destroy(opponent.gameObject);
+            opponent.death.Invoke(this);
+            Destroy(opponent.gameObject);
         }
         return result;
     }
@@ -41,4 +45,5 @@ public class Unit
     {
         Debug.Log("se murio");
     }
+
 }

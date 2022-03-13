@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    List<Unit> towerLevels = new List<Unit>();
+
+    public void PopulateTower(Unit unit)
     {
-        
+        towerLevels.Add(unit);
+        unit.death += OnUnityDeath;
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnUnityDeath(Unit unit)
     {
-        
+        towerLevels.Remove(unit);
+
+        if(towerLevels.Count <= 0)
+        {
+            //torre destruida 
+        }
     }
 }

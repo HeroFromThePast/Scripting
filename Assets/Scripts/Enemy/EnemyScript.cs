@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyScript : MonoBehaviour
+public class EnemyScript : Unit
 {
-    [SerializeField] Unit unit;
 
     void Start()
     {
@@ -21,7 +20,7 @@ public class EnemyScript : MonoBehaviour
         if (collision.tag == "Player")
         {
             Unit playerUnit = collision.gameObject.GetComponent<Unit>();
-            playerUnit.Combat(unit);
+            playerUnit.Combat(this);
         }
     }
 
