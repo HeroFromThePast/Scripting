@@ -24,6 +24,19 @@ public class Unit
         }
         return result;
     }
+
+    int FightObstacle(Obstacle obstacle)
+    {
+        int result = this.level;
+
+        this.level += obstacle.level;
+
+        result = this.level;
+
+        return result;
+
+    }
+
     public virtual void Die()
     {
         Debug.Log("se murio");
