@@ -4,21 +4,40 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    List<Unit> towerLevels = new List<Unit>();
+    public List<Unit> towerLevels = new List<Unit>();
+    public delegate void OnTowerDestroy(Tower tower);
 
+    EnemyScript enemy;
+    public event OnTowerDestroy towerDestroy;
+    bool fillWithDefault;
+    private void Awake()
+    {
+        GameObject defaultEnemy = new GameObject();
+        enemy = defaultEnemy.AddComponent<EnemyScript>();
+        enemy.UnitName = "DefaultEnemy";
+        enemy.level = 1;
+        PopulateTower(enemy);
+        fillWithDefault = true;
+    }
     public void PopulateTower(Unit unit)
     {
         towerLevels.Add(unit);
-        unit.death += OnUnityDeath;
+        unit.death += OnUnitDeath;
+
+        if (fillWithDefault)
+        {
+            towerLevels.Remove(enemy);
+            fillWithDefault = false;
+        }
     }
 
-    void OnUnityDeath(Unit unit)
+    void OnUnitDeath(Unit unit)
     {
         towerLevels.Remove(unit);
 
         if(towerLevels.Count <= 0)
         {
-            //torre destruida 
+            towerDestroy?.Invoke(this);
         }
     }
 }

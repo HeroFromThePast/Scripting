@@ -92,4 +92,56 @@ public class CombatTest
         yield return null;
     }
     #endregion
+
+    [UnitySetUp]
+    public IEnumerator TestWinnnerLevelSetUp()
+    {
+        test1CharObj = new GameObject();
+        testPlayer1 = test1CharObj.AddComponent<Player>();
+        oponent1CharObj = new GameObject();
+        testEnemy1 = oponent1CharObj.AddComponent<EnemyScript>();
+
+        test2CharObj = new GameObject();
+        testPlayer2 = test2CharObj.AddComponent<Player>();
+        oponent2CharObj = new GameObject();
+        testEnemy2 = oponent2CharObj.AddComponent<EnemyScript>();
+
+        test3CharObj = new GameObject();
+        testPlayer3 = test3CharObj.AddComponent<Player>();
+        oponent3CharObj = new GameObject();
+        testEnemy3 = oponent3CharObj.AddComponent<EnemyScript>();
+
+        //en este caso gana el "jugador"
+        testPlayer1.level = 5;
+        testPlayer1.UnitName = "TestPlayer 1";
+        testEnemy1.level = 3;
+        testEnemy1.UnitName = "TestOponent 1";
+
+        //en este caso pierde el "jugador"
+        testPlayer2.level = 5;
+        testPlayer2.UnitName = "TestPlayer 2";
+        testEnemy2.level = 5;
+        testEnemy2.UnitName = "TestOponent 2";
+
+        //en este caso pierde el "jugador"
+        testPlayer3.level = 3;
+        testPlayer3.UnitName = "TestPlayer 3";
+        testEnemy3.level = 5;
+        testEnemy3.UnitName = "TestOponent 3";
+
+        yield return null;
+    }
+
+    [UnityTest]
+    public IEnumerator TestWinnnerLevel()
+    {
+        Assert.AreEqual(8, testPlayer1.Combat(testEnemy1).level); // la idea es que devuelva la unidad que ganó y se compara el nivel con el que se espera
+
+        Assert.AreEqual(10, testPlayer2.Combat(testEnemy2).level);
+
+        Assert.AreEqual(8, testPlayer3.Combat(testEnemy3).level);
+         yield return null;
+    }
+
+
 }

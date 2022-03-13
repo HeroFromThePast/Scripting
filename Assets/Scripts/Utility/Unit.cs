@@ -4,12 +4,13 @@ using UnityEngine;
 
 public abstract class Unit : MonoBehaviour
 {
-    [SerializeField]public string UnitName, faction;
-    [SerializeField]public int level;
+    [SerializeField]public string UnitName = "DefaultUnit";
+    [SerializeField]public int level = 1;
 
 
     public delegate void OnDeath(Unit unit);
     public event OnDeath death;
+
     public virtual Unit Combat(Unit opponent)
     {
         Unit result;
@@ -23,7 +24,6 @@ public abstract class Unit : MonoBehaviour
         {
             level += opponent.level;
             result = this;
-            opponent.death.Invoke(this);
             Destroy(opponent.gameObject);
         }
         return result;
@@ -44,6 +44,7 @@ public abstract class Unit : MonoBehaviour
     public virtual void Die()
     {
         Debug.Log("se murio");
+        death?.Invoke(this);
     }
 
 }
