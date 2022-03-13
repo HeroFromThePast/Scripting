@@ -71,7 +71,5 @@ public class CombatTests
         Assert.AreEqual(8, test1Char.FightObstacle(test1Obstacle));
         Assert.AreEqual(10, test2Char.FightObstacle(test2Obstacle));
         Assert.AreEqual(7, test3Char.FightObstacle(test3Obstacle));
-
-
     }
 }

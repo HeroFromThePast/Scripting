@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class Unit : MonoBehaviour
 {
-    [SerializeField]public string UnitName = "DefaultUnit";
-    [SerializeField]public int level = 1;
+    public string UnitName;
+    public int level;
 
 
     public delegate void OnDeath(Unit unit);
