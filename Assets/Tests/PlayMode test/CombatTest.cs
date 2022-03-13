@@ -21,9 +21,16 @@ public class CombatTest
     GameObject oponent3CharObj;
     EnemyScript testEnemy3;
 
+    GameObject test1ObstacleObj;
+    Obstacle test1Obstacle;
+    GameObject test2ObstacleObj;
+    Obstacle test2Obstacle;
+    GameObject test3ObstacleObj;
+    Obstacle test3Obstacle;
+
     #region CombatWinnerTest
-    [UnitySetUp]
-    public IEnumerator CombatWinnerTestsSetUp()
+    [UnityTest]
+    public IEnumerator CombatWinnerTests()
     {
         test1CharObj = new GameObject();
         testPlayer1 = test1CharObj.AddComponent<Player>();
@@ -58,11 +65,6 @@ public class CombatTest
         testEnemy3.level = 5;
         testEnemy3.UnitName = "TestOponent 3";
 
-        yield return null;
-    }
-    [UnityTest]
-    public IEnumerator CombatWinnerTests()
-    {
         Assert.AreEqual(testPlayer1.UnitName, testPlayer1.Combat(testEnemy1).UnitName); // la idea es que devuelva la unidad que ganó y se compara el nombre con el quese espera que gane
 
         Assert.AreEqual(testEnemy2.UnitName, testPlayer2.Combat(testEnemy2).UnitName);
@@ -72,29 +74,11 @@ public class CombatTest
         yield return null;
     }
     
-    [UnityTearDown]
-    public IEnumerator CombatWinnerTestsTearDown()
-    {
-        Object.Destroy(test1CharObj);
-        Object.Destroy(testPlayer1);
-        Object.Destroy(oponent1CharObj);
-        Object.Destroy(testEnemy1);
-
-        Object.Destroy(test2CharObj);
-        Object.Destroy(testPlayer2);
-        Object.Destroy(oponent2CharObj);
-        Object.Destroy(testEnemy2);
-
-        Object.Destroy(test3CharObj);
-        Object.Destroy(testPlayer3);
-        Object.Destroy(oponent3CharObj);
-        Object.Destroy(testEnemy3);
-        yield return null;
-    }
     #endregion
 
-    [UnitySetUp]
-    public IEnumerator TestWinnnerLevelSetUp()
+    #region TestWinnerLevel
+    [UnityTest]
+    public IEnumerator TestWinnnerLevel()
     {
         test1CharObj = new GameObject();
         testPlayer1 = test1CharObj.AddComponent<Player>();
@@ -129,12 +113,6 @@ public class CombatTest
         testEnemy3.level = 5;
         testEnemy3.UnitName = "TestOponent 3";
 
-        yield return null;
-    }
-
-    [UnityTest]
-    public IEnumerator TestWinnnerLevel()
-    {
         Assert.AreEqual(8, testPlayer1.Combat(testEnemy1).level); // la idea es que devuelva la unidad que ganó y se compara el nivel con el que se espera
 
         Assert.AreEqual(10, testPlayer2.Combat(testEnemy2).level);
@@ -143,5 +121,46 @@ public class CombatTest
          yield return null;
     }
 
+    #endregion
 
+    #region TestFightObstacle
+    [UnityTest]
+    public IEnumerator TestFightObstacle()
+    {
+        test1CharObj = new GameObject();
+        testPlayer1 = test1CharObj.AddComponent<Player>();
+        test1ObstacleObj = new GameObject();
+        test1Obstacle = test1ObstacleObj.AddComponent<Obstacle>();
+
+        test2CharObj = new GameObject();
+        testPlayer2 = test2CharObj.AddComponent<Player>();
+        test2ObstacleObj = new GameObject();
+        test2Obstacle = test2ObstacleObj.AddComponent<Obstacle>();
+
+
+        test3CharObj = new GameObject();
+        testPlayer3 = test3CharObj.AddComponent<Player>();
+        test3ObstacleObj = new GameObject();
+        test3Obstacle = test3ObstacleObj.AddComponent<Obstacle>();
+
+
+        testPlayer1.level = 3;
+        testPlayer1.UnitName = "TestPlayer 1";
+        test1Obstacle.level = 5;
+
+        testPlayer2.level = 5;
+        testPlayer2.UnitName = "TestPlayer 2";
+        test2Obstacle.level = 5;
+
+        testPlayer3.level = 5;
+        testPlayer3.UnitName = "TestPlayer 3";
+        test3Obstacle.level = 2;
+
+        Assert.AreEqual(8, testPlayer1.Combat(test1Obstacle));
+        Assert.AreEqual(10, testPlayer2.Combat(test2Obstacle));
+        Assert.AreEqual(7, testPlayer3.Combat(test3Obstacle));
+
+        yield return null;
+    }
+    #endregion
 }

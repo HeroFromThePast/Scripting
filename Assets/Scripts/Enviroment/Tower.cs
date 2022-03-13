@@ -5,8 +5,8 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     public List<Unit> towerLevels = new List<Unit>();
-    public delegate void OnTowerDestroy(Tower tower);
 
+    public delegate void OnTowerDestroy(Tower tower);
     public event OnTowerDestroy towerDestroy;
 
     public void PopulateTower(Unit unit)

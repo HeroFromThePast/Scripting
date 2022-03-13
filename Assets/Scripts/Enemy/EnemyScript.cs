@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyScript : Unit
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+  /*  private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
@@ -12,5 +12,5 @@ public class EnemyScript : Unit
             playerUnit.Combat(this);
         }
     }
-
+  */
 }
