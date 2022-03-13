@@ -87,8 +87,33 @@ public class CombatTests
 
     [Test]
 
-    void TestFightobstacle()
+    public void TestFightobstacle()
     {
+        Player test1Char = new Player();
+        Player test2Char = new Player();
+        Player test3Char = new Player();
+
+
+        Obstacle test1Obstacle = new Obstacle();
+        Obstacle test2Obstacle = new Obstacle();
+        Obstacle test3Obstacle = new Obstacle();
+
+        test1Char.level = 3;
+        test1Char.UnitName = "TestPlayer 1";
+        test1Obstacle.level = 5;
+
+        test2Char.level = 5;
+        test1Char.UnitName = "TestPlayer 2";
+        test2Obstacle.level = 5;
+            
+        test3Char.level = 5;
+        test1Char.UnitName = "TestPlayer 3";
+        test3Obstacle.level = 2;
+
+        Assert.AreEqual(8, test1Char.FightObstacle(test1Obstacle));
+        Assert.AreEqual(10, test2Char.FightObstacle(test2Obstacle));
+        Assert.AreEqual(7, test3Char.FightObstacle(test3Obstacle));
+
 
     }
 }
