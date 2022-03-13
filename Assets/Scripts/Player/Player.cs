@@ -4,12 +4,25 @@ using UnityEngine;
 
 public class Player : Unit
 {
-    [SerializeField] int lives = 3;
+    [SerializeField] public int lives = 3;
+  
+         
+                                        
+
+
+
     // Start is called before the first frame update
+
 
     public override void Die()
     {
         base.Die();
         lives--;
+        if (lives < 0)
+        {
+            lives = 0;
+        }
+        Debug.Log(lives);
+     
     }
 }
