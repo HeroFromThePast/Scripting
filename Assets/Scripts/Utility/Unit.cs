@@ -25,7 +25,7 @@ public class Unit
         return result;
     }
 
-    int FightObstacle(Obstacle obstacle)
+    public int FightObstacle(Obstacle obstacle)
     {
         int result = this.level;
 
