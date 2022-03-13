@@ -84,4 +84,11 @@ public class CombatTests
 
         Assert.AreEqual(8, test3Char.Combat(oponent3char).level);
     }
+
+    [Test]
+
+    void TestFightobstacle()
+    {
+
+    }
 }
