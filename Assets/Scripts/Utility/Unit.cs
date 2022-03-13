@@ -7,7 +7,7 @@ public class Unit
     [SerializeField]public string UnitName, faction;
     [SerializeField]public int level;
 
-    public Unit Combat(Unit opponent)
+    public virtual Unit Combat(Unit opponent)
     {
         Unit result = new Unit();
         if (opponent.level >= this.level)
