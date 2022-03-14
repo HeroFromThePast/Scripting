@@ -8,7 +8,7 @@ public class TowerDestroyTest
 {
 
     [UnityTest]
-    public IEnumerator TowerDestroyTestWithEnumeratorPasses()
+    public IEnumerator TowerDestroyTest3Enemys()
     {
         GameObject towerCrafterObject = new GameObject();
         TowerCrafter towerCrafer = towerCrafterObject.AddComponent<TowerCrafter>();
