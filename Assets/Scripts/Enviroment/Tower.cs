@@ -5,17 +5,17 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     public List<Unit> towerLevels = new List<Unit>();
-
+    public TowerTypes.TowerType type;
     public delegate void OnTowerDestroy(Tower tower);
     public event OnTowerDestroy towerDestroy;
 
-    public void PopulateTower(Unit unit)
+    public virtual void PopulateTower(Unit unit)
     {
         towerLevels.Add(unit);
         unit.death += OnUnitDeath;
     }
 
-    void OnUnitDeath(Unit unit)
+    virtual public void OnUnitDeath(Unit unit)
     {
         towerLevels.Remove(unit);
 

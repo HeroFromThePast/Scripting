@@ -32,6 +32,7 @@ public class CombatTest
     [UnityTest]
     public IEnumerator CombatWinnerTests()
     {
+        Player.instance = null;
         test1CharObj = new GameObject();
         testPlayer1 = test1CharObj.AddComponent<Player>();
         oponent1CharObj = new GameObject();
@@ -65,11 +66,11 @@ public class CombatTest
         testEnemy3.level = 5;
         testEnemy3.UnitName = "TestOponent 3";
 
-        Assert.AreEqual(testPlayer1.UnitName, testPlayer1.Combat(testEnemy1).UnitName); // la idea es que devuelva la unidad que ganó y se compara el nombre con el quese espera que gane
+        Assert.AreEqual(testPlayer1.UnitName, testPlayer1.Combat(testEnemy1, UnitTypes.UnitType.Enemy).UnitName); // la idea es que devuelva la unidad que ganó y se compara el nombre con el quese espera que gane
 
-        Assert.AreEqual(testEnemy2.UnitName, testPlayer2.Combat(testEnemy2).UnitName);
+        Assert.AreEqual(testEnemy2.UnitName, testPlayer2.Combat(testEnemy2, UnitTypes.UnitType.Enemy).UnitName);
 
-        Assert.AreEqual(testEnemy3.UnitName, testPlayer3.Combat(testEnemy3).UnitName);
+        Assert.AreEqual(testEnemy3.UnitName, testPlayer3.Combat(testEnemy3, UnitTypes.UnitType.Enemy).UnitName);
 
         yield return null;
     }
@@ -80,6 +81,7 @@ public class CombatTest
     [UnityTest]
     public IEnumerator TestWinnnerLevel()
     {
+        Player.instance = null;
         test1CharObj = new GameObject();
         testPlayer1 = test1CharObj.AddComponent<Player>();
         oponent1CharObj = new GameObject();
@@ -113,11 +115,11 @@ public class CombatTest
         testEnemy3.level = 5;
         testEnemy3.UnitName = "TestOponent 3";
 
-        Assert.AreEqual(8, testPlayer1.Combat(testEnemy1).level); // la idea es que devuelva la unidad que ganó y se compara el nivel con el que se espera
+        Assert.AreEqual(8, testPlayer1.Combat(testEnemy1, UnitTypes.UnitType.Enemy).level); // la idea es que devuelva la unidad que ganó y se compara el nivel con el que se espera
 
-        Assert.AreEqual(10, testPlayer2.Combat(testEnemy2).level);
+        Assert.AreEqual(10, testPlayer2.Combat(testEnemy2, UnitTypes.UnitType.Enemy).level);
 
-        Assert.AreEqual(8, testPlayer3.Combat(testEnemy3).level);
+        Assert.AreEqual(8, testPlayer3.Combat(testEnemy3, UnitTypes.UnitType.Enemy).level);
          yield return null;
     }
 
@@ -127,6 +129,7 @@ public class CombatTest
     [UnityTest]
     public IEnumerator TestFightObstacle()
     {
+        Player.instance = null;
         test1CharObj = new GameObject();
         testPlayer1 = test1CharObj.AddComponent<Player>();
         test1ObstacleObj = new GameObject();
@@ -156,9 +159,9 @@ public class CombatTest
         testPlayer3.UnitName = "TestPlayer 3";
         test3Obstacle.level = 2;
 
-        Assert.AreEqual(8, testPlayer1.Combat(test1Obstacle));
-        Assert.AreEqual(10, testPlayer2.Combat(test2Obstacle));
-        Assert.AreEqual(7, testPlayer3.Combat(test3Obstacle));
+        Assert.AreEqual(8, testPlayer1.Combat(test1Obstacle, UnitTypes.UnitType.Support).level);
+        Assert.AreEqual(10, testPlayer2.Combat(test2Obstacle, UnitTypes.UnitType.Support).level);
+        Assert.AreEqual(7, testPlayer3.Combat(test3Obstacle, UnitTypes.UnitType.Support).level);
 
         yield return null;
     }

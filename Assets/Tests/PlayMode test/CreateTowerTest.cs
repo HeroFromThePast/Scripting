@@ -19,7 +19,7 @@ public class CreateTowerTest
         enemyTest1.level = DefaultEnemy.level;
 
         //Torre de un nivel
-        towerTest = towerCrafter.CreateTower(enemyTest1);
+        towerTest = towerCrafter.CreateTower(enemyTest1, TowerTypes.TowerType.EnemyTower);
 
         Assert.AreEqual(1, towerTest.towerLevels.Count);
 
@@ -38,15 +38,12 @@ public class CreateTowerTest
         Unit[] emptyArray = new Unit[0];
 
         //Torre de un nivel
-        towerTest = towerCrafter.CreateTower(emptyArray);
+        towerTest = towerCrafter.CreateTower(emptyArray, TowerTypes.TowerType.EnemyTower);
 
         LogAssert.Expect(LogType.Assert, "The array its invalid");
         Assert.AreEqual(null, towerTest);
 
-
-
         yield return null;
-
     }
 
     [UnityTest]
@@ -59,7 +56,7 @@ public class CreateTowerTest
         Tower towerTest;
         Unit[] Array = new Unit[5];
         //Torre de un nivel
-        towerTest = towerCrafter.CreateTower(Array);
+        towerTest = towerCrafter.CreateTower(Array, TowerTypes.TowerType.EnemyTower);
 
         LogAssert.Expect(LogType.Assert, "The array its empty");
         Assert.AreEqual(null, towerTest);
@@ -89,7 +86,7 @@ public class CreateTowerTest
         }
 
         //Torre de un nivel
-        towerTest = towerCrafter.CreateTower(Array);
+        towerTest = towerCrafter.CreateTower(Array, TowerTypes.TowerType.EnemyTower);
 
         Assert.AreEqual(5, towerTest.towerLevels.Count);
 

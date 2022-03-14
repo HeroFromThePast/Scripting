@@ -29,6 +29,7 @@ public class PlayerLoseLife
     [UnityTest]
     public IEnumerator PlayerLoseLifeWithEnumeratorPasses()
     {
+        Player.instance = null;
         //player
         testCharObj = new GameObject();
         testPlayer = testCharObj.AddComponent<Player>();
@@ -55,31 +56,31 @@ public class PlayerLoseLife
 
         //Enemy level>jugador
         //dos vidas
-        Assert.AreEqual(testPlayer.level+testEnemy.level, testPlayer.Combat(testEnemy).level);
+        Assert.AreEqual(testPlayer.level+testEnemy.level, testPlayer.Combat(testEnemy, UnitTypes.UnitType.Enemy).level);
          Assert.AreEqual(2,testPlayer.lives);
 
         //una vida vidas
      
-        Assert.AreEqual(testPlayer.level + testEnemy.level, testPlayer.Combat(testEnemy).level);
+        Assert.AreEqual(testPlayer.level + testEnemy.level, testPlayer.Combat(testEnemy, UnitTypes.UnitType.Enemy).level);
         Assert.AreEqual(1, testPlayer.lives);
         
         // sin vidas
-        Assert.AreEqual(testPlayer.level + testEnemy.level, testPlayer.Combat(testEnemy).level);
+        Assert.AreEqual(testPlayer.level + testEnemy.level, testPlayer.Combat(testEnemy, UnitTypes.UnitType.Enemy).level);
         Assert.AreEqual(0, testPlayer.lives);
 
         //Enemy level==jugador
 
         //dos vidas
-        Assert.AreEqual(testPlayer2.level + testEnemy2.level, testPlayer2.Combat(testEnemy2).level);
+        Assert.AreEqual(testPlayer2.level + testEnemy2.level, testPlayer2.Combat(testEnemy2, UnitTypes.UnitType.Enemy).level);
         Assert.AreEqual(2, testPlayer2.lives);
 
         //una vida vidas
 
-        Assert.AreEqual(testPlayer2.level + testEnemy2.level, testPlayer2.Combat(testEnemy2).level);
+        Assert.AreEqual(testPlayer2.level + testEnemy2.level, testPlayer2.Combat(testEnemy2, UnitTypes.UnitType.Enemy).level);
         Assert.AreEqual(1, testPlayer2.lives);
 
         // sin vidas
-        Assert.AreEqual(testPlayer2.level + testEnemy2.level, testPlayer2.Combat(testEnemy2).level);
+        Assert.AreEqual(testPlayer2.level + testEnemy2.level, testPlayer2.Combat(testEnemy2, UnitTypes.UnitType.Enemy).level);
         Assert.AreEqual(0, testPlayer2.lives);
         Assert.IsFalse(-1== testPlayer2.lives);
         Debug.Log(testPlayer2.lives);

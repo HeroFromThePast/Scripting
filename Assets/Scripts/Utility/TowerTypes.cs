@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : Unit
+public static class TowerTypes
 {
-
+    public enum TowerType {PlayerTower,EnemyTower};
 }

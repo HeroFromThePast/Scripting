@@ -5,36 +5,59 @@ using UnityEngine;
 public class Player : Unit
 {
     [SerializeField] public int lives = 3;
+    public static Player instance;
 
-    public Unit Combat(EnemyScript opponent)
+    private void Awake()
     {
-        Unit result;
-        if (opponent.level >= this.level)
+        if(instance == null)
         {
-            Die();
-            opponent.level += this.level;
-            result = opponent;
+            instance = this;
         }
         else
         {
-            level += opponent.level;
-            result = this;
-            Destroy(opponent.gameObject);
+            Destroy(gameObject);
         }
-        return result;
-    }
 
-    public int Combat(Obstacle obstacle)
+        new GameObject().AddComponent<PlayerTower>();
+    }
+    public Unit Combat(Unit opponent, UnitTypes.UnitType type)
     {
-        int result = this.level;
+        Unit result = null;
 
-        this.level += obstacle.level;
+        switch (type)
+        {
+            case UnitTypes.UnitType.Player:
+                break;
+            case UnitTypes.UnitType.Enemy:
+                if (opponent.level >= this.level)
+                {
+                    Die();
+                    opponent.level += this.level;
+                    result = opponent;
+                }
+                else
+                {
+                    level += opponent.level;
+                    result = this;
+                    PlayerTower.instance.AddLevel();
+                    Destroy(opponent.gameObject);
+                }
+                break;
+            case UnitTypes.UnitType.Support:
 
-        result = this.level;
+                this.level += opponent.level;
+
+                result = this;
+                break;
+            case UnitTypes.UnitType.towerlevel:
+                break;
+            default:
+                break;
+        }
 
         return result;
-
     }
+
 
 
     public override void Die()

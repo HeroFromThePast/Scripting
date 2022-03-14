@@ -22,7 +22,7 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         EnemyScript enemy = new GameObject().AddComponent<EnemyScript>();
-        towerCrafter.CreateTower(enemy);
+        towerCrafter.CreateTower(enemy, TowerTypes.TowerType.EnemyTower);
     }
 
    

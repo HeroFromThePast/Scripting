@@ -6,21 +6,22 @@ using UnityEngine;
 
 public class TowerCrafter : MonoBehaviour
 {
-    public Tower CreateTower(Unit unit)
+    public Tower CreateTower(Unit unit, TowerTypes.TowerType type)
     {
         GameObject towerObject = new GameObject();
         Tower tower = towerObject.AddComponent<Tower>();
+        tower.type = type;
         tower.PopulateTower(unit);
         return tower;
     }
 
-    public Tower CreateTower(Unit[] units)
+    public Tower CreateTower(Unit[] units, TowerTypes.TowerType type)
     {
         if (units.Length > 0)
         {
             GameObject towerObject = new GameObject();
             Tower tower = towerObject.AddComponent<Tower>();
-
+            tower.type = type;
             for (int i = 0; i < units.Length; i++)
             {
                 if(units[i] != null)
