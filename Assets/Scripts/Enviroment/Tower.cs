@@ -18,7 +18,7 @@ public class Tower : MonoBehaviour
     virtual public void OnUnitDeath(Unit unit)
     {
         towerLevels.Remove(unit);
-
+        Debug.Log(towerLevels.Count);
         if(towerLevels.Count <= 0)
         {
             towerDestroy?.Invoke(this);

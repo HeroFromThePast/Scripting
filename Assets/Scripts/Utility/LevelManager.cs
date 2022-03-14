@@ -5,24 +5,21 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     private int state = 0;
-    public Player player;
-    //public EnemyScript enemy;
-    public Tower tower;
-    public TowerCrafter towerCrafter;
+    public List<Tower> enemyTowers = new List<Tower>();
 
-    // Start is called before the first frame update
-    void Start()
+    public void AddTower(Tower tower)
     {
-        //towerCrafter = GetComponent<TowerCrafter>();
-        GameObject towerObject = new GameObject();
-        towerCrafter = towerObject.AddComponent<TowerCrafter>();
+        enemyTowers.Add(tower);
+        tower.towerDestroy += TowerDestroyed;
     }
 
-    // Update is called once per frame
-    void Update()
+    void TowerDestroyed(Tower tower)
     {
-        EnemyScript enemy = new GameObject().AddComponent<EnemyScript>();
-        towerCrafter.CreateTower(enemy, TowerTypes.TowerType.EnemyTower);
+        enemyTowers.Remove(tower);
+        Debug.Log("Torre destruida");
+        Debug.Log("Torres restantes: " + enemyTowers.Count);
+        tower.towerDestroy -= TowerDestroyed;
+        Destroy(tower.gameObject);
     }
 
    

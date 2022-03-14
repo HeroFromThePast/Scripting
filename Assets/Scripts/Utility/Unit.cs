@@ -27,9 +27,12 @@ public abstract class Unit : MonoBehaviour
     public virtual void Die()
     {
         Debug.Log("se murio");
-
-        death?.Invoke(this);
        
+    }
+
+    private void OnDestroy()
+    {
+        death?.Invoke(this);
     }
 
 }
