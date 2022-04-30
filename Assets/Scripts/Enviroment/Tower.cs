@@ -2,20 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower : MonoBehaviour
+public abstract class Tower : MonoBehaviour
 {
     public List<Unit> towerLevels = new List<Unit>();
     public TowerTypes.TowerType type;
     public delegate void OnTowerDestroy(Tower tower);
     public event OnTowerDestroy towerDestroy;
 
+    public GameObject towerPrefab;
+    public float towerLevelOffset;
     public virtual void PopulateTower(Unit unit)
     {
         towerLevels.Add(unit);
-        unit.death += OnUnitDeath;
+        GameObject towerLevel = Instantiate(towerPrefab);
+        towerLevel.transform.position = (Vector2)transform.position + new Vector2(0, towerLevelOffset * towerLevels.Count - 1);
+        unit.towerLevel = towerLevel;
+        unit.transform.position = towerLevel.transform.position;
     }
 
-    virtual public void OnUnitDeath(Unit unit)
+    public virtual void OnUnitDeath(Unit unit)
     {
         towerLevels.Remove(unit);
         Debug.Log(towerLevels.Count);

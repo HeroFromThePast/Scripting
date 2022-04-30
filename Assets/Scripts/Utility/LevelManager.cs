@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    private int state = 0;
     public List<Tower> enemyTowers = new List<Tower>();
 
     public void AddTower(Tower tower)

@@ -6,6 +6,12 @@ public class PlayerTower : Tower
 {
     public static PlayerTower instance;
 
+    [SerializeField]
+    GameObject player;
+    [SerializeField]
+    GameObject supportObject;
+
+    public int SupportObjectsAmount;
     private void Awake()
     {
         if(instance == null)
@@ -17,7 +23,19 @@ public class PlayerTower : Tower
             Destroy(gameObject);
         }
 
+        if(Player.instance == null)
+        {
+            Instantiate(player);
+        }
+
         PopulateTower(Player.instance);
+
+
+        for (int i = 0; i < SupportObjectsAmount; i++)
+        {
+            GameObject obj = Instantiate(supportObject);
+            PopulateTower(obj.GetComponent<SupportObj>());
+        }
     }
 
     public override void OnUnitDeath(Unit unit)
@@ -25,8 +43,6 @@ public class PlayerTower : Tower
         //Regresar al player a un nivel de su torre 
     }
 
-    public void AddLevel()
-    {
-        towerLevels.Add(new GameObject().AddComponent<TowerLevelUnit>());
-    }
+
+
 }

@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class Player : Unit
 {
-    [SerializeField] public int lives = 3;
+    [SerializeField] 
+    public int lives = 3;
+    [SerializeField]
+    TextMeshProUGUI levelDisplay;
     public static Player instance;
 
     private void Awake()
@@ -18,7 +21,7 @@ public class Player : Unit
             Destroy(gameObject);
         }
 
-        new GameObject().AddComponent<PlayerTower>();
+        levelDisplay.text = level.ToString();
     }
     public Unit Combat(Unit opponent, UnitTypes.UnitType type)
     {
@@ -39,7 +42,7 @@ public class Player : Unit
                 {
                     level += opponent.level;
                     result = this;
-                    PlayerTower.instance.AddLevel();
+                    PlayerTower.instance.PopulateTower(new GameObject().AddComponent<EnemyScript>());
                     Destroy(opponent.gameObject);
                 }
                 break;
@@ -48,8 +51,6 @@ public class Player : Unit
                 this.level += opponent.level;
 
                 result = this;
-                break;
-            case UnitTypes.UnitType.towerlevel:
                 break;
             default:
                 break;

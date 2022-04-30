@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public abstract class Unit : MonoBehaviour
 {
     public string UnitName;
     public int level;
     public UnitTypes.UnitType type;
-
-    public delegate void OnDeath(Unit unit);
-    public event OnDeath death;
+    public GameObject towerLevel;
+    public Action<Unit> OnDeath;
     private void Awake()
     {
         if(UnitName == null)
@@ -32,7 +32,7 @@ public abstract class Unit : MonoBehaviour
 
     private void OnDestroy()
     {
-        death?.Invoke(this);
+        OnDeath?.Invoke(this);
     }
 
 }
