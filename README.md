@@ -17,14 +17,9 @@ Una vez abierto el TestRunner, se debe seleccionar la pestaña de PlayMode pues 
 Y ya se podrán ejecutar los test, de la forma que se desee.
 
 Consideraciones:
-No hay consideraciones especiales a la hora de ejecutar las pruebas, simplemente se ejecutan, se espera a que termine el PlayMode y se podrán ver
-los resultados esperados de las pruebas.
+Acutalmente existe un problema, y consiste en que por alguna razon aun no descubierta, el primer objeto de la primera torre el nivel que se le asigna es arbitrario, dentro del editor, en los logs de consola, se puede evidenciar el intento por buscar el error, sin embargo no fuimos capaces de dar con la causa, esto ocaciona, que en algunos casos no exista una ruta para ganar, por el momento, en este caso, se debe arrastrar al personaje contra el enemigo hasta perder todas las vidas para poder reiniciar el nivel.
+
+Para esta entrega como tal, no se desarrollaron nuevas pruebas unitarias, incluso, por modificaciones realizadas para implementar los patrones de diseño, algunas pruebas ya no son superadas.
 
 
-Dificultades:
--Fue muy complicado manejar un estilo uniforme de programación, tanto que aún se está trabajando para intentar tener un código homogéneo.
-
--Dudamos mucho sobre el entorno de pruebas a utilizar, esto llevo a que en un inicio creáramos las pruebas en modo editor y luego tuviéramos que mirarlo todo al PlayMode
-
--Fue bastante complicado intentar adaptarse a las rúbricas teniendo en cuenta que las clases mono no pueden hacer uso de un constructor, lo cual dificulto bastante realizar las
-restricciones pedidas en las rúbricas. 
+Link al ejecutable: https://drive.google.com/drive/folders/1XbrRLpswcTH4Pf89C2thNGiPE3QaGBm1?usp=sharing
