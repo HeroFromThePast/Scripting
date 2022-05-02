@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 public class Player : Unit
 {
     [SerializeField] 
@@ -9,7 +10,10 @@ public class Player : Unit
     [SerializeField]
     TextMeshProUGUI levelDisplay;
     public static Player instance;
-
+    public bool enemyKilled;
+    public Action OnPlayerfail;
+    public Action OnLiveChange;
+    public Vector2 startingPosition;
     private void Awake()
     {
         if(instance == null)
@@ -22,6 +26,8 @@ public class Player : Unit
         }
 
         levelDisplay.text = level.ToString();
+        OnLiveChange?.Invoke();
+        startingPosition = transform.position;
     }
     public Unit Combat(Unit opponent, UnitTypes.UnitType type)
     {
@@ -49,25 +55,46 @@ public class Player : Unit
             case UnitTypes.UnitType.Support:
 
                 this.level += opponent.level;
-
+                Destroy(opponent.gameObject);
                 result = this;
                 break;
             default:
                 break;
         }
-
+        enemyKilled = true;
+        ReturnToTower();
         return result;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Enemy") || collision.CompareTag("Support"))
+        {
+            Debug.Log("Combat");
+            Combat(collision.GetComponent<Unit>(), collision.GetComponent<Unit>().type);
+            UpdateLevel();
+        }
+    }
+
+    void UpdateLevel()
+    {
+        levelDisplay.text = level.ToString();
+    }
+
+    public void ReturnToTower()
+    {
+        transform.position = startingPosition;
+    }
 
 
     public override void Die()
     {
         base.Die();
         lives--;
-        if (lives < 0)
+        OnLiveChange?.Invoke();
+        if (lives <= 0)
         {
-            lives = 0;
+            OnPlayerfail?.Invoke();
         }
         Debug.Log(lives);
      

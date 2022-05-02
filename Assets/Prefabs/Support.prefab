@@ -170,7 +170,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.006}
+  m_AnchoredPosition: {x: 0, y: 2.005}
   m_SizeDelta: {x: 4.22, y: 1.998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1435123416
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435123412}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
@@ -245,9 +245,10 @@ GameObject:
   - component: {fileID: 7951202102638295420}
   - component: {fileID: 453547866127193019}
   - component: {fileID: 8837258005916241668}
+  - component: {fileID: 5748948515203363916}
   m_Layer: 0
   m_Name: Support
-  m_TagString: Untagged
+  m_TagString: Support
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -331,7 +332,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitName: 
-  level: 1
+  level: 3
   type: 2
   towerLevel: {fileID: 0}
   levelDisplay: {fileID: 1273918978}
+--- !u!70 &5748948515203363916
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6820475601405239650}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 2}
+  m_Direction: 0

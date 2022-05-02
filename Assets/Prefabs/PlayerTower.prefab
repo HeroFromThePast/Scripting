@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8302293583971575246
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8302293583971575240}
+  - component: {fileID: 8302293583971575241}
+  - component: {fileID: 1198937404229310374}
+  m_Layer: 0
+  m_Name: PlayerTower
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8302293583971575240
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8302293583971575246}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -18.24, y: -4.13, z: -5.144271}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8302293583971575241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8302293583971575246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6070c71e43b76a42bb637aa390b8f86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerLevels: []
+  type: 0
+  towerPrefab: {fileID: 4470988865657139598, guid: a3906e93a9b785b4a8c0fe647386d54c, type: 3}
+  towerLevelOffset: 2.25
+  player: {fileID: 4164068515695731750, guid: 0cea9c55e3ed1e844983b0eba479e40c, type: 3}
+  supportObject: {fileID: 6820475601405239650, guid: f816b18b2bf386e4e83137ef4baf2d23, type: 3}
+  supportFactory: {fileID: 1198937404229310374}
+--- !u!114 &1198937404229310374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8302293583971575246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495017e1c7343b54e864e15a0fe90e6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  template: {fileID: 6820475601405239650, guid: f816b18b2bf386e4e83137ef4baf2d23, type: 3}

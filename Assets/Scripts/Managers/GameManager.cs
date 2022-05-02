@@ -1,32 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    EnemyTower enemyTower;
-
+    GameObject winScreen;
     [SerializeField]
-    EnemyFactory enemyFactory;
-
-    [SerializeField]
-    int TowerLevels;
+    GameObject loseScreen;
     // Start is called before the first frame update
     void Start()
     {
-
-
-        for (int i = 0; i < TowerLevels; i++)
-        {
-            GameObject enemy = enemyFactory.GetNewEntity("EnemyTest", 3, UnitTypes.UnitType.Enemy);
-            enemyTower.PopulateTower(enemy.GetComponent<Unit>());
-        }
+        LevelManager.instance.LevelWin += WinGame;
+        LevelManager.instance.StartLevel();
+        Player.instance.OnPlayerfail += LoseGame;
+        winScreen.SetActive(false);
+        loseScreen.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ExitGame()
     {
-        
+        Application.Quit();
+    }
+
+    public void ResetGame()
+    {
+        SceneManager.LoadScene("Level");
+    }
+
+    void WinGame()
+    {
+        winScreen.SetActive(true);
+    }
+
+    void LoseGame()
+    {
+        loseScreen.SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        LevelManager.instance.LevelWin -= WinGame;
+        Player.instance.OnPlayerfail -= LoseGame;
     }
 }

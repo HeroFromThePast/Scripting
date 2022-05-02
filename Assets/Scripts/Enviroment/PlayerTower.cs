@@ -10,8 +10,9 @@ public class PlayerTower : Tower
     GameObject player;
     [SerializeField]
     GameObject supportObject;
+    [SerializeField]
+    SupportFactory supportFactory;
 
-    public int SupportObjectsAmount;
     private void Awake()
     {
         if(instance == null)
@@ -29,11 +30,21 @@ public class PlayerTower : Tower
         }
 
         PopulateTower(Player.instance);
+        Player.instance.startingPosition = Player.instance.transform.position;
 
+    }
 
-        for (int i = 0; i < SupportObjectsAmount; i++)
+    /// <summary>
+    /// Generar los objetos de soporte, el nivel maximo es inclusivo
+    /// </summary>
+    /// <param name="amount"></param>
+    /// <param name="minLevel"></param>
+    /// <param name="maxLevel"></param>
+    public void CreateSupport(int amount, int minLevel, int maxLevel)
+    {
+        for (int i = 0; i < amount; i++)
         {
-            GameObject obj = Instantiate(supportObject);
+            GameObject obj = supportFactory.GetNewEntity("support", Random.Range(0, 4), UnitTypes.UnitType.Support);
             PopulateTower(obj.GetComponent<SupportObj>());
         }
     }
@@ -43,6 +54,15 @@ public class PlayerTower : Tower
         //Regresar al player a un nivel de su torre 
     }
 
+    public int GetTowerLevel()
+    {
+        int towerLevel = 0;
+        for (int i = 0; i < towerLevels.Count; i++)
+        {
+            towerLevel += towerLevels[i].level;
+        }
 
+        return towerLevel;
+    }
 
 }

@@ -14,6 +14,7 @@ public abstract class Tower : MonoBehaviour
     public virtual void PopulateTower(Unit unit)
     {
         towerLevels.Add(unit);
+        unit.OnDeath += OnUnitDeath;
         GameObject towerLevel = Instantiate(towerPrefab);
         towerLevel.transform.position = (Vector2)transform.position + new Vector2(0, towerLevelOffset * towerLevels.Count - 1);
         unit.towerLevel = towerLevel;
@@ -23,6 +24,7 @@ public abstract class Tower : MonoBehaviour
     public virtual void OnUnitDeath(Unit unit)
     {
         towerLevels.Remove(unit);
+        Destroy(unit.towerLevel);
         Debug.Log(towerLevels.Count);
         if(towerLevels.Count <= 0)
         {

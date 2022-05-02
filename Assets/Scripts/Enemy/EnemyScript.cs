@@ -10,16 +10,8 @@ public class EnemyScript : Unit
 
     void Start()
     {
-        levelDisplay.text = level.ToString();
+        if(levelDisplay != null)
+            levelDisplay.text = level.ToString();
     }
 
-    /*  private void OnTriggerEnter2D(Collider2D collision)
-      {
-          if (collision.tag == "Player")
-          {
-              Unit playerUnit = collision.gameObject.GetComponent<Unit>();
-              playerUnit.Combat(this);
-          }
-      }
-    */
 }
