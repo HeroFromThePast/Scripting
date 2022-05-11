@@ -4,20 +4,21 @@ using UnityEngine;
 
 public abstract class Tower : MonoBehaviour
 {
+    //script base para todas las torres
     public List<Unit> towerLevels = new List<Unit>();
     public TowerTypes.TowerType type;
     public delegate void OnTowerDestroy(Tower tower);
-    public event OnTowerDestroy towerDestroy;
+    public event OnTowerDestroy towerDestroy; 
 
-    public GameObject towerPrefab;
+    public GameObject towerPrefab; 
     public GameObject towerPrefabTop;
-    public float towerLevelOffset;
+    public float towerLevelOffset; //separar distancia de las torres
     public virtual void PopulateTower(Unit unit)
     {
-       
+       //añadir enemigos o player a la torre
         towerLevels.Add(unit);
         unit.OnDeath += OnUnitDeath;
-        GameObject towerLevel = Instantiate(towerPrefab);
+        GameObject towerLevel = Instantiate(towerPrefab);//instancea la posicion
         towerLevel.transform.position = (Vector2)transform.position + new Vector2(0, towerLevelOffset * towerLevels.Count - 1);
         unit.towerLevel = towerLevel;
         unit.transform.position = towerLevel.transform.position;

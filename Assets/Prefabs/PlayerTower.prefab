@@ -47,7 +47,8 @@ MonoBehaviour:
   towerLevels: []
   type: 0
   towerPrefab: {fileID: 4470988865657139598, guid: a3906e93a9b785b4a8c0fe647386d54c, type: 3}
-  towerLevelOffset: 2.25
+  towerPrefabTop: {fileID: 0}
+  towerLevelOffset: 2.9
   player: {fileID: 4164068515695731750, guid: 0cea9c55e3ed1e844983b0eba479e40c, type: 3}
   supportObject: {fileID: 6820475601405239650, guid: f816b18b2bf386e4e83137ef4baf2d23, type: 3}
   supportFactory: {fileID: 1198937404229310374}

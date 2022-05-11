@@ -8,14 +8,15 @@ public class Player : Unit
     [SerializeField] 
     public int lives = 3;
     [SerializeField]
-    TextMeshProUGUI levelDisplay;
-    public static Player instance;
-    public bool enemyKilled;
-    public Action OnPlayerfail;
-    public Action OnLiveChange;
-    public Vector2 startingPosition;
+    TextMeshProUGUI levelDisplay; //se muestra el nivel
+    public static Player instance; 
+    public bool enemyKilled; //controla cuando uno lo está agarrando y mata un enemgio, es para que el jugador no arrastre el sprite y mate a todos los enemigos
+    public Action OnPlayerfail; 
+    public Action OnLiveChange; 
+    public Vector2 startingPosition; 
     private void Awake()
     {
+        //singleton
         if(instance == null)
         {
             instance = this;
@@ -29,10 +30,11 @@ public class Player : Unit
         OnLiveChange?.Invoke();
         startingPosition = transform.position;
     }
+    //Combate
     public Unit Combat(Unit opponent, UnitTypes.UnitType type)
     {
         Unit result = null;
-
+        //de qué otra forma se pudo haber hecho?
         switch (type)
         {
             case UnitTypes.UnitType.Player:
@@ -41,7 +43,7 @@ public class Player : Unit
                 if (opponent.level >= this.level)
                 {
                     Die();
-                    opponent.level += this.level;
+                    opponent.level += this.level; 
                     result = opponent;
                 }
                 else
