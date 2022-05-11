@@ -332,7 +332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitName: 
-  level: 0
+  level: 1
   type: 2
   towerLevel: {fileID: 0}
   levelDisplay: {fileID: 1273918978}
