@@ -13,31 +13,61 @@ public class AudioManager : MonoBehaviour
         Player.instance.OnPlayerfail += LoseAudio;
         audioSource = FindObjectOfType<AudioSource>();
         audioSource.volume = 0.5f;
-        //GameAudio();
+        GameAudio();
 
     }
 
    void WinAudio()
     {
-        audioSource.PlayOneShot(audioClips[0]);
+        audioSource.Stop();
+        foreach(AudioClip element in audioClips)
+        {
+            if(element.name=="Win Screen")
+            {
+                audioSource.clip = element;
+                audioSource.Play();
+            }
+           
+        }
+      
+    
+      
+        
       
     }
     void LoseAudio()
     {
-        audioSource.PlayOneShot(audioClips[1]);
-       
+        audioSource.Stop();
+        foreach (AudioClip element in audioClips)
+        {
+            if (element.name == "Lose Sound")
+            {
+                audioSource.clip = element;
+                audioSource.Play();
+            }
+
+        }
+
+   
+
+
 
     }
     void GameAudio()
     {
-        audioSource.PlayOneShot(audioClips[2]);
-        
-    }
-    void GameAudioStop()
-    {
-        audioSource.Stop();
+        foreach (AudioClip element in audioClips)
+        {
+            if (element.name == "Videogame Music")
+            {
+                audioSource.clip = element;
+                audioSource.Play();
+            }
+
+        }
+      
 
     }
+   
     void Update()
     {
         

@@ -14,17 +14,32 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LevelManager.instance.LevelWin += WinGame;
-        LevelManager.instance.StartLevel();
-        Player.instance.OnPlayerfail += LoseGame;
-        winScreen.SetActive(false);
-        loseScreen.SetActive(false);
+        if(LevelManager.instance!=null)
+        {
+            LevelManager.instance.LevelWin += WinGame;
+            LevelManager.instance.StartLevel();
+        }
+        if(Player.instance!=null)
+        {
+            Player.instance.OnPlayerfail += LoseGame;
+        }
+  
+        if (winScreen != null)
+        {
+            winScreen.SetActive(false);
+        }
+        if(loseScreen!=null)
+        {
+            loseScreen.SetActive(false);
+        }
+       
     }
 
     public void ExitGame()
     {
         Application.Quit();
     }
+   
 
     public void ResetGame()
     {
@@ -33,17 +48,33 @@ public class GameManager : MonoBehaviour
 
     void WinGame()
     {
-        winScreen.SetActive(true);
+        if(winScreen!=null)
+        {
+            winScreen.SetActive(true);
+        }
+     
     }
 
     void LoseGame()
     {
-        loseScreen.SetActive(true);
+        if(loseScreen!=null)
+        {
+            loseScreen.SetActive(true);
+        }
+        
     }
 
     private void OnDisable()
     {
-        LevelManager.instance.LevelWin -= WinGame;
-        Player.instance.OnPlayerfail -= LoseGame;
+        if(LevelManager.instance!=null)
+        {
+            LevelManager.instance.LevelWin -= WinGame;
+        }
+       
+        if (Player.instance != null)
+        {
+            Player.instance.OnPlayerfail -= LoseGame;
+        }
+       
     }
 }
