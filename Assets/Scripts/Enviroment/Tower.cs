@@ -10,9 +10,11 @@ public abstract class Tower : MonoBehaviour
     public event OnTowerDestroy towerDestroy;
 
     public GameObject towerPrefab;
+    public GameObject towerPrefabTop;
     public float towerLevelOffset;
     public virtual void PopulateTower(Unit unit)
     {
+       
         towerLevels.Add(unit);
         unit.OnDeath += OnUnitDeath;
         GameObject towerLevel = Instantiate(towerPrefab);
