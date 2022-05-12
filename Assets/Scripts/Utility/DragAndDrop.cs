@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class DragAndDrop : MonoBehaviour
 {
     Vector3 dragOffset;
     Camera cam;
+    public event Action OnClickedDone;
     private void Awake()
     {
         cam = Camera.main;
@@ -13,6 +15,7 @@ public class DragAndDrop : MonoBehaviour
 
     private void OnMouseDown()
     {
+        OnClickedDone?.Invoke();
         dragOffset = transform.position - GetMousePos();
         Player.instance.enemyKilled = false;
     }

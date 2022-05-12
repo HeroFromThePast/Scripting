@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,9 +10,30 @@ public class GameManager : MonoBehaviour
     GameObject winScreen;
     [SerializeField]
     GameObject loseScreen;
-  
+    [SerializeField]
+    GameObject pauseMenu;
+    [SerializeField]
+    GameObject volumeMenu;
+    public AudioMixer audioMixer;
+    
+    public static bool GameIsPaused = false;
 
     // Start is called before the first frame update
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(GameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
+        
+    }
     void Start()
     {
         if(LevelManager.instance!=null)
@@ -34,7 +56,36 @@ public class GameManager : MonoBehaviour
         }
        
     }
+    public void ChangeVolume(float volume)
+    {
+        audioMixer.SetFloat("volumen", volume);
+    }
+    public void VolumeMenuActive()
+    {
+        volumeMenu.SetActive(true);
 
+    }
+    public void VolumeMenuUnactive()
+    {
+        volumeMenu.SetActive(false);
+
+    }
+    public void Pause()
+    {
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+    }
+    public void Resume()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+    }
+    public void GetToMain()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
     public void ExitGame()
     {
         Application.Quit();

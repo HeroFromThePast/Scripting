@@ -12,7 +12,8 @@ public class Player : Unit
     public static Player instance; 
     public bool enemyKilled; //controla cuando uno lo está agarrando y mata un enemgio, es para que el jugador no arrastre el sprite y mate a todos los enemigos
     public Action OnPlayerfail; 
-    public Action OnLiveChange; 
+    public Action OnLiveChange;
+    public event Action OnCollideSup;
     public Vector2 startingPosition; 
     private void Awake()
     {
@@ -72,6 +73,10 @@ public class Player : Unit
     {
         if(collision.CompareTag("Enemy") || collision.CompareTag("Support"))
         {
+            if(collision.CompareTag("Support"))
+            {
+                OnCollideSup?.Invoke();
+            }
             Debug.Log("Combat");
             Combat(collision.GetComponent<Unit>(), collision.GetComponent<Unit>().type);
             UpdateLevel();

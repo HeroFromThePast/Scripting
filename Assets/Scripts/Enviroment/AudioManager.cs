@@ -6,18 +6,62 @@ public class AudioManager : MonoBehaviour
 {
     AudioSource audioSource;
     [SerializeField] AudioClip []audioClips;
+    DragAndDrop drag;
+    
     
     void Start()
     {
         LevelManager.instance.LevelWin += WinAudio;
         Player.instance.OnPlayerfail += LoseAudio;
-        audioSource = FindObjectOfType<AudioSource>();
-        audioSource.volume = 0.5f;
+        Player.instance.OnCollideSup += SupSound;
+        Player.instance.OnLiveChange += DamageSound;
+       audioSource = FindObjectOfType<AudioSource>();
+        drag = FindObjectOfType<DragAndDrop>();
+        drag.OnClickedDone += ClickAudio;
+       
         GameAudio();
 
     }
 
-   void WinAudio()
+    void DamageSound()
+    {
+        foreach (AudioClip element in audioClips)
+        {
+            if (element.name == "damage")
+            {
+                //audioSource.clip = element;
+                audioSource.PlayOneShot(element);
+            }
+
+        }
+    }
+    public void ClickAudio()
+    {
+        
+        foreach (AudioClip element in audioClips)
+        {
+            if (element.name == "mouseClick")
+            {
+                //audioSource.clip = element;
+                audioSource.PlayOneShot(element);
+            }
+
+        }
+    }
+    void SupSound()
+    {
+
+        foreach (AudioClip element in audioClips)
+        {
+            if (element.name == "SupSound")
+            {
+                
+                audioSource.PlayOneShot(element);
+            }
+
+        }
+    }
+    void WinAudio()
     {
         audioSource.Stop();
         foreach(AudioClip element in audioClips)
@@ -30,9 +74,6 @@ public class AudioManager : MonoBehaviour
            
         }
       
-    
-      
-        
       
     }
     void LoseAudio()
@@ -76,5 +117,7 @@ public class AudioManager : MonoBehaviour
     {
         LevelManager.instance.LevelWin -= WinAudio;
         Player.instance.OnPlayerfail -= LoseAudio;
+        drag.OnClickedDone -= ClickAudio;
+        Player.instance.OnLiveChange -= DamageSound;
     }
 }
