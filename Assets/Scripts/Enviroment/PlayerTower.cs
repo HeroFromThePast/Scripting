@@ -40,7 +40,7 @@ public class PlayerTower : Tower
     /// <param name="amount"></param>
     /// <param name="minLevel"></param>
     /// <param name="maxLevel"></param>
-    public void CreateSupport(int amount, int minLevel, int maxLevel)
+    public void CreateSupport(int amount, int minLevel, int maxLevel) //para qué se usan 
     {
         for (int i = 0; i < amount; i++)
         {
@@ -54,7 +54,7 @@ public class PlayerTower : Tower
         //Regresar al player a un nivel de su torre 
     }
 
-    public int GetTowerLevel()
+    public int GetTowerLevel()//calcula la torre del player, porque de este depende el nivel de los enemigos
     {
         int towerLevel = 0;
         for (int i = 0; i < towerLevels.Count; i++)

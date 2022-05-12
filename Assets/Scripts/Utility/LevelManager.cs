@@ -50,14 +50,14 @@ public class LevelManager : MonoBehaviour
     void CreatePlayerTower()
     {
         Transform playerTower = Instantiate(playerTowerPrefab, playerTowerPoint.position, Quaternion.identity);
-        playerTower.GetComponent<PlayerTower>().CreateSupport(UnityEngine.Random.Range(0, 4), 1, 5);
+        playerTower.GetComponent<PlayerTower>().CreateSupport(UnityEngine.Random.Range(0, 4), 1, 5);//no entiendo esta línea de código
         RandomizeTowerAmount();
         liveDisplay.GetPlayerReference();
     }
 
     void RandomizeTowerAmount()
     {
-        int towerAmount = UnityEngine.Random.Range(1, 4);
+        int towerAmount = UnityEngine.Random.Range(1, 4);//numero de toguers
         for (int i = 0; i < towerAmount; i++)
         {
             Transform enemyTower = Instantiate(enemyTowerPrefab, enemyTowerPoint.position + new Vector3(enemyTowerOffset * enemyTowers.Count,0,0), Quaternion.identity);
@@ -88,7 +88,7 @@ public class LevelManager : MonoBehaviour
         int minLevel = 1;
         int maxLevel = 1;
 
-            maxLevel = (PlayerTower.instance.GetTowerLevel() + enemyAcumulatedLevel);
+            maxLevel = (PlayerTower.instance.GetTowerLevel() + enemyAcumulatedLevel);//se calcula el nivel máximo a partir del nivel del jugador
             enemyLevel = UnityEngine.Random.Range(minLevel, maxLevel);
             enemyAcumulatedLevel = enemyLevel;
             Debug.Log("Returned level " + enemyLevel);

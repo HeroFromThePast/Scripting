@@ -350,14 +350,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1552584203095220654, guid: 2433a0af06fe4d34ca5cfb1ceec7bddb, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.850276
-      objectReference: {fileID: 0}
-    - target: {fileID: 1552584203095220654, guid: 2433a0af06fe4d34ca5cfb1ceec7bddb, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.8474209
-      objectReference: {fileID: 0}
-    - target: {fileID: 1552584203095220654, guid: 2433a0af06fe4d34ca5cfb1ceec7bddb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.013
       objectReference: {fileID: 0}
@@ -400,10 +392,6 @@ PrefabInstance:
     - target: {fileID: 8469889723944436368, guid: 2433a0af06fe4d34ca5cfb1ceec7bddb, type: 3}
       propertyPath: m_Name
       value: platformer_background_3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8702970324695470316, guid: 2433a0af06fe4d34ca5cfb1ceec7bddb, type: 3}
-      propertyPath: m_SortingOrder
-      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2433a0af06fe4d34ca5cfb1ceec7bddb, type: 3}
