@@ -23,3 +23,4 @@ Para esta entrega como tal, no se desarrollaron nuevas pruebas unitarias, inclus
 
 
 Link al ejecutable: https://drive.google.com/drive/folders/1XbrRLpswcTH4Pf89C2thNGiPE3QaGBm1?usp=sharing
+Ejecutable final: https://upbeduco-my.sharepoint.com/:f:/g/personal/iuma_toro_upb_edu_co/Et7nLt9AH9JJpTs0SaCAcRABBlcHsYBrgnccgq84Y5Z1jw?e=3fMZe5
